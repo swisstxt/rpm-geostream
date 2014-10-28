@@ -33,7 +33,7 @@ popd
 %build
 pushd %{name}
   # install all dependencies via bundler
-  /opt/ruby-1.9.3/bin/bundle install --deployment --shebang=/opt/ruby-1.9.3/bin/ruby
+  /opt/ruby-1.9.3/bin/bundle install --deployment  --without development --shebang=/opt/ruby-1.9.3/bin/ruby
 
   # install bundler itself
   cat <<-EOD > gemrc
