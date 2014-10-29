@@ -1,3 +1,6 @@
+%global  geostream_user          geostream
+%global  geostream_group         %{geostream_user}
+
 Name:           geostream
 Version:        %{ver}
 Release:        %{rel}1%{?dist}
@@ -19,6 +22,7 @@ Requires: libxml2 libxslt
 %define cfgdir %{appdir}/config
 %define logdir %{appdir}/log
 %define tmpdir %{appdir}/tmp
+%define tmpdir %{appdir}/public
 
 %description
 Geostream - Audiostreaming GeoIP API
@@ -71,12 +75,23 @@ pushd %{name}
 popd
 rm -f $RPM_BUILD_ROOT/%{appdir}/log/.gitkeep
 
+%pre
+if [ $1 -eq 1 ]; then
+    getent group %{geostream_group} > /dev/null || groupadd -r %{geostream_group}
+    getent passwd %{geostream_user} > /dev/null || \
+        useradd -r -d %{appdir} -g %{geostream_group} \
+        -s /sbin/nologin -c "Geostream server" %{geostream_user}
+    exit 0
+fi
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(-,root,root,-)
 %{appdir}
-%attr(755,root,root) %{logdir}
-%attr(755,root,root) %{tmpdir}
+%attr(755,geostream,geostream) %{logdir}
+%attr(755,geostream,geostream) %{tmpdir}
+%attr(755,geostream,geostream) %{pubdir}
+%config(noreplace) %{cfgdir}/mongoid.yml
 %doc
