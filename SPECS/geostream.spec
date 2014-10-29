@@ -22,7 +22,7 @@ Requires: libxml2 libxslt
 %define cfgdir %{appdir}/config
 %define logdir %{appdir}/log
 %define tmpdir %{appdir}/tmp
-%define tmpdir %{appdir}/public
+%define pubdir %{appdir}/public
 
 %description
 Geostream - Audiostreaming GeoIP API
