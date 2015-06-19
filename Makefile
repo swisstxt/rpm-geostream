@@ -1,5 +1,5 @@
 HOME=$(shell pwd)
-VERSION="1.0.2"
+VERSION="1.0.3"
 RELEASE="1"
 
 all: build
