@@ -1,0 +1,18 @@
+[Unit]
+Description=Geostream
+After=syslog.target
+After=network.target
+
+[Service]
+Type=simple
+SyslogIdentifier=geostream
+PIDFile=/srv/geostream/tmp/puma.pid
+WorkingDirectory=/srv/geostream
+Environment="RACK_ENV=production"
+ExecStart=/srv/geostream/bin/puma -C /srv/geostream/config/puma.rb config.ru -b unix:///srv/geostream/tmp/puma.sock
+ExecReload=/bin/kill -s SIGUSR2 $MAINPID
+ExecStop=/bin/kill -s SIGTERM $MAINPID
+TimeoutSec=10
+
+[Install]
+WantedBy=multi-user.target

@@ -11,10 +11,17 @@ clean:
 
 build: clean
 	cp -r ./SPECS/* ./rpmbuild/SPECS/ || true
-	rpmbuild -ba SPECS/geostream.spec \
+	cp -r ./SOURCES/* ./rpmbuild/SOURCES/ || true
+	rpmbuild -ba ${SPEC} \
 	--define "ver ${VERSION}" \
 	--define "rel ${RELEASE}" \
+	--define "name ${NAME}" \
+	--define "os_rel ${OS_RELEASE}" \
+	--define "arch ${ARCH}" \
 	--define "_topdir %(pwd)/rpmbuild" \
 	--define "_builddir %{_topdir}" \
 	--define "_rpmdir %{_topdir}" \
 	--define "_srcrpmdir %{_topdir}" \
+
+publish:
+	/opt/buildhelper/buildhelper pushrpm yum-01.stxt.media.int:8080/swisstxt-centos

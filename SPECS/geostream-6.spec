@@ -52,7 +52,7 @@ EOD
   # correct shebangs for opt-ruby
   egrep -rl '#!/usr/bin/env ruby' . \
   | xargs sed -ri 's@#!/usr/bin/env ruby@#!/opt/ruby-1.9.3/bin/ruby@g'
-  
+
   egrep -rl '#!/usr/local/bin/ruby' . &&
   egrep -rl '#!/usr/local/bin/ruby' . \
   | xargs sed -ri 's@#!/usr/local/bin/ruby@#!/opt/ruby-1.9.3/bin/ruby@g'
