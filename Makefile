@@ -1,6 +1,6 @@
 HOME=$(shell pwd)
-VERSION="1.0.3"
-NAME=geostream
+VERSION="v1.0.3"
+NAME="geostream"
 RELEASE=$(shell /opt/buildhelper/buildhelper getgitrev .)
 SPEC=$(shell /opt/buildhelper/buildhelper getspec ${NAME})
 ARCH=$(shell /opt/buildhelper/buildhelper getarch)
