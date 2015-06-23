@@ -8,7 +8,7 @@ License:        commercial
 URL:            https://github.com/swisstxt/geostream
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
-Source0:        %{name}.service
+Source0:        geostream.service
 
 BuildRequires: ruby rubygems rubygem-bundler
 BuildRequires: gcc libxml2 libxml2-devel libxslt libxslt-devel openssl-devel
@@ -23,6 +23,7 @@ BuildRequires: systemd
 
 %define git_repo git@github.com:swisstxt/%{name}.git
 %define appdir /srv/%{name}
+%define systemd_dest /usr/lib/systemd/system/
 %define cfgdir %{appdir}/config
 %define logdir %{appdir}/log
 %define tmpdir %{appdir}/tmp
