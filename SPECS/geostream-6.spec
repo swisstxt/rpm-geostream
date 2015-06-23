@@ -31,7 +31,7 @@ Geostream - Audiostreaming GeoIP API
 rm -rf %{name}
 git clone %{git_repo}
 pushd %{name}
-  git checkout -q v%{version}
+  git checkout -q %{version}
 popd
 
 %build
