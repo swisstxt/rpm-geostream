@@ -45,6 +45,9 @@ popd
 pushd %{name}
   gem install bundler
   bundle install --deployment --binstubs --without development
+  bundle exec rake assets:precompile
+  bundle exec rake tmp:clear
+  bundle exec rake log:clear
 popd
 
 %install
