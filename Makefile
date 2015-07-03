@@ -1,5 +1,5 @@
 HOME=$(shell pwd)
-VERSION="v1.0.5"
+VERSION="v1.0.6"
 NAME="geostream"
 RELEASE=$(shell /opt/buildhelper/buildhelper getgitrev .)
 SPEC=$(shell /opt/buildhelper/buildhelper getspec ${NAME})
